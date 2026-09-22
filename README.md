@@ -1,5 +1,28 @@
 # Codex 제작 스킬 모음
 
+## 기존 스킬을 최신 버전으로 덮어쓰기
+
+이미 설치한 스킬을 이 저장소의 최신 버전으로 업데이트하려면 PowerShell에서 저장소 폴더로 이동한 뒤 먼저 최신 변경을 받고 `-Force`로 다시 설치합니다.
+
+```powershell
+git pull
+.\install-skills.ps1 -Force
+```
+
+특정 스킬만 덮어쓰려면 이름을 지정합니다.
+
+```powershell
+.\install-skills.ps1 -Names cinematic-video-prompts -Force
+```
+
+기본 설치 위치는 `%USERPROFILE%\.agents\skills`입니다. Codex가 `%USERPROFILE%\.codex\skills`의 개인 스킬을 사용하도록 구성되어 있다면 설치 위치를 명시합니다.
+
+```powershell
+.\install-skills.ps1 -Names cinematic-video-prompts -DestinationRoot "$env:USERPROFILE\.codex\skills" -Force
+```
+
+`-Force`는 저장소에 있는 파일을 같은 이름의 기존 파일 위에 복사합니다. 새 버전에서 제거된 파일은 설치 폴더에 남을 수 있습니다. 폴더 구성이 크게 바뀐 스킬을 완전히 교체하려면 기존 스킬 폴더를 백업하거나 삭제한 뒤 다시 설치하세요. 삭제할 때는 스킬 이름이 포함된 정확한 경로를 확인하고 해당 폴더 하나만 대상으로 지정합니다.
+
 ## 가장 쉬운 설치: Codex에 아래 문장 붙여 넣기
 
 로컬 파일을 다룰 수 있는 Codex 앱이나 CLI의 새 대화에서 아래를 그대로 요청하세요.
