@@ -1,77 +1,58 @@
 # Codex 제작 스킬 모음
 
-## 가장 쉬운 업데이트 — Windows·Mac 공통
+스킬은 Codex가 특정 작업을 수행하는 방법을 알려주는 폴더입니다. Windows와 Mac 모두 아래의 **AI 도구에 맡기기**가 가장 쉽습니다. 컴퓨터에서 파일을 읽고 쓸 수 있는 Codex 앱이나 AI 코딩 CLI의 대화창에 문장을 붙여넣으세요. 일반 터미널이나 검색창에 붙여넣는 명령이 아닙니다.
 
-이미 설치하셨다면 **로컬 파일을 다룰 수 있는 Codex 앱이나 CLI의 새 대화에 아래 문장을 복사해 보내세요.** 터미널 명령을 직접 입력할 필요가 없습니다.
+## 가장 쉬운 방법: Codex나 AI 코딩 CLI에 맡기기
 
-```text
-https://github.com/9mr-arch/Codex_Skills 의 최신 버전으로 기존 스킬을 업데이트해줘.
-내 컴퓨터에서 기존 스킬이 설치된 경로를 먼저 확인하고, 이 저장소에서 이미 설치한 스킬만 같은 위치에 덮어써줘.
-기존 폴더는 스킬 검색 경로 밖에 백업한 뒤, 최신 스킬 폴더 전체로 교체해줘.
-다른 스킬은 그대로 두고, 끝나면 업데이트한 스킬과 백업 위치를 알려줘.
-```
-
-하나만 업데이트하려면 두 번째 문장을 **“cinematic-video-prompts만 기존 설치 위치에 덮어써줘.”**로 바꾸세요. 완료 후 새 대화에서 사용하시고, 목록에 보이지 않으면 Codex를 다시 시작하세요. 처음 설치하시는 분은 아래의 **가장 쉬운 설치** 안내를 이용하세요.
-
-### Mac에서 직접 교체하기 — Finder 사용
-
-1. GitHub의 **Code → Download ZIP**을 선택하고 다운로드한 ZIP을 압축 해제합니다.
-2. Finder에서 **이동 → 폴더로 이동…** 또는 **⌘⇧G**를 누르고 `~/.agents/skills`를 입력합니다. 기존 스킬이 `~/.codex/skills`에 있다면 그 위치를 사용합니다.
-3. 업데이트할 기존 스킬 폴더를 바탕화면의 백업 폴더 등 **스킬 경로 밖으로 옮깁니다.**
-4. 압축을 푼 저장소에서 같은 이름의 최신 스킬 폴더를 그 자리에 복사합니다. `SKILL.md` 하나가 아니라 **폴더 전체**를 복사하세요.
-5. Codex에서 새 대화를 시작합니다. 목록이 갱신되지 않으면 앱을 다시 시작합니다.
-
-설치 위치를 모르거나 폴더가 없다면 위의 Codex 요청 문구를 사용하세요. 같은 스킬을 두 경로에 중복 설치하지 않도록 기존 위치를 확인하는 것이 좋습니다.
-
-### Windows에서 명령으로 덮어쓰기
-
-이미 설치한 스킬을 이 저장소의 최신 버전으로 업데이트하려면 PowerShell에서 저장소 폴더로 이동한 뒤 먼저 최신 변경을 받고 `-Force`로 다시 설치합니다.
-
-```powershell
-git pull
-.\install-skills.ps1 -Force
-```
-
-특정 스킬만 덮어쓰려면 이름을 지정합니다.
-
-```powershell
-.\install-skills.ps1 -Names cinematic-video-prompts -Force
-```
-
-기본 설치 위치는 `%USERPROFILE%\.agents\skills`입니다. Codex가 `%USERPROFILE%\.codex\skills`의 개인 스킬을 사용하도록 구성되어 있다면 설치 위치를 명시합니다.
-
-```powershell
-.\install-skills.ps1 -Names cinematic-video-prompts -DestinationRoot "$env:USERPROFILE\.codex\skills" -Force
-```
-
-`-Force`는 저장소에 있는 파일을 같은 이름의 기존 파일 위에 복사합니다. 새 버전에서 제거된 파일은 설치 폴더에 남을 수 있습니다. 폴더 구성이 크게 바뀐 스킬을 완전히 교체하려면 기존 스킬 폴더를 백업하거나 삭제한 뒤 다시 설치하세요. 삭제할 때는 스킬 이름이 포함된 정확한 경로를 확인하고 해당 폴더 하나만 대상으로 지정합니다.
-
-## 가장 쉬운 설치: Codex에 아래 문장 붙여 넣기
-
-로컬 파일을 다룰 수 있는 Codex 앱이나 CLI의 새 대화에서 아래를 그대로 요청하세요.
+처음 설치할 때는 새 대화에 아래 문장을 그대로 보내세요.
 
 ```text
-https://github.com/9mr-arch/Codex_Skills 저장소의 스킬 6개를 내 Codex에 설치해줘.
-저장소를 내려받고 SKILL.md가 있는 각 폴더 전체를 사용자 스킬 경로 ~/.agents/skills에 복사해줘.
-이미 같은 이름이 있으면 변경 내용을 확인하고 알려줘.
-설치가 끝나면 스킬 목록과 호출 예시를 보여줘.
+https://github.com/9mr-arch/Codex_Skills 에 있는 스킬을 이 컴퓨터에 설치해줘.
+내가 쓰는 AI 도구의 사용자 스킬 폴더가 어디인지 먼저 확인해줘.
+저장소에서 SKILL.md가 들어 있는 스킬 폴더 전체를 그 위치에 복사해줘.
+이미 설치된 같은 이름의 스킬이 있다면 바로 덮어쓰지 말고 알려줘.
+끝나면 설치한 스킬 이름과 설치 위치를 알려줘.
 ```
 
-하나만 필요하면 이렇게 요청합니다.
+이미 설치한 스킬을 최신 버전으로 바꿀 때는 다음 문장을 보내세요.
 
 ```text
-$skill-installer https://github.com/9mr-arch/Codex_Skills/tree/main/cinematic-video-prompts 에 있는 스킬을 설치해줘.
+https://github.com/9mr-arch/Codex_Skills 의 최신 버전으로 이 컴퓨터에 이미 설치된 스킬을 업데이트해줘.
+내가 쓰는 AI 도구의 기존 스킬 설치 위치를 먼저 확인해줘.
+기존 스킬 폴더를 스킬 설치 위치 밖에 백업한 다음, 저장소의 최신 폴더 전체로 교체해줘.
+이 저장소에서 설치하지 않은 다른 스킬은 건드리지 말아줘.
+끝나면 업데이트한 스킬 이름, 설치 위치, 백업 위치를 알려줘.
 ```
 
-설치 후 새 대화에서 `$cinematic-video-prompts`처럼 이름을 지정해 사용합니다. 목록에 나타나지 않으면 Codex를 다시 시작하세요.
+하나만 업데이트하려면 문장 맨 끝에 `cinematic-video-prompts만 업데이트해줘.`처럼 스킬 이름을 덧붙이세요. Codex 외의 AI 코딩 CLI도 컴퓨터의 파일을 다룰 수 있다면 같은 문장을 사용할 수 있습니다. 파일 접근 권한을 묻는 창이 나오면 표시된 **대상 폴더를 확인**한 뒤 진행하세요.
+
+설치나 업데이트가 끝나면 AI 도구에서 새 대화를 열어 스킬을 사용해 보세요. 목록에 나타나지 않으면 앱이나 CLI를 다시 시작하세요.
 
 ```text
 $cinematic-video-prompts 첨부한 스타일프레임의 구도를 살려 15초 광고 영상 프롬프트를 작성해줘.
 ```
 
-폴더 단위 설치와 `$skill-installer` 사용은 [공식 스킬 안내](https://learn.chatgpt.com/docs/build-skills)를 참고했습니다. 스킬은 작업 지침이며, 이미지 생성 도구나 3D 모델 가중치가 함께 설치되는 패키지는 아닙니다.
+직접 설치하거나 교체하고 싶다면 운영체제에 맞는 아래 설명을 따르세요.
 
-각 하위 폴더는 독립적으로 설치할 수 있는 Codex 스킬입니다. 원하는 폴더를 그대로 복사하면 됩니다.
+## Windows: 파일 탐색기로 직접 설치·교체
+
+1. 이 GitHub 페이지 위쪽의 **Code → Download ZIP**을 누릅니다. 다운로드한 ZIP 파일을 마우스 오른쪽 버튼으로 눌러 **모두 압축 풀기**를 선택합니다.
+2. 파일 탐색기를 열고 맨 위 주소창에 `%USERPROFILE%\.agents\skills`를 붙여넣은 뒤 Enter를 누릅니다. 현재 사용 중인 스킬이 `%USERPROFILE%\.codex\skills`에 있다면 그 폴더를 사용하세요. 두 곳 중 어디인지 모르겠다면 위의 AI 도구 방법을 이용하세요.
+3. **처음 설치:** 압축을 푼 폴더 안에서 원하는 스킬 폴더를 찾아 `skills` 폴더 안에 복사합니다.
+4. **기존 버전 교체:** `skills` 안의 같은 이름 폴더를 바탕화면 등 다른 위치로 먼저 옮겨 백업합니다. 그다음 압축을 푼 폴더의 최신 스킬 폴더를 `skills` 안에 복사합니다.
+5. `SKILL.md` 파일 하나만 복사하지 말고 스킬 **폴더 전체**를 복사하세요. 설치 후 Codex를 새로 시작합니다.
+
+Windows에서 PowerShell과 Git을 이미 사용한다면, 저장소 폴더에서 `git pull`로 최신 내용을 받은 뒤 `.\install-skills.ps1 -Force`로 덮어쓸 수도 있습니다. 이 스크립트의 기본 설치 위치는 `%USERPROFILE%\.agents\skills`입니다. 이전 버전에서 삭제된 파일은 남을 수 있으므로 완전한 교체가 필요하면 위의 백업 후 폴더 교체 방법을 사용하세요.
+
+## Mac: Finder로 직접 설치·교체
+
+1. 이 GitHub 페이지 위쪽의 **Code → Download ZIP**을 누릅니다. 다운로드한 ZIP 파일을 두 번 눌러 압축을 풉니다.
+2. Finder를 열고 **이동 → 폴더로 이동…**을 선택합니다. 단축키는 **⌘⇧G**입니다. `~/.agents/skills`를 입력합니다. 현재 사용 중인 스킬이 `~/.codex/skills`에 있다면 그 폴더를 사용하세요. 위치를 모르겠다면 위의 AI 도구 방법을 이용하세요.
+3. **처음 설치:** 압축을 푼 폴더 안에서 원하는 스킬 폴더를 찾아 `skills` 폴더 안에 복사합니다.
+4. **기존 버전 교체:** `skills` 안의 같은 이름 폴더를 바탕화면 등 다른 위치로 먼저 옮겨 백업합니다. 그다음 압축을 푼 폴더의 최신 스킬 폴더를 `skills` 안에 복사합니다.
+5. `SKILL.md` 파일 하나만 복사하지 말고 스킬 **폴더 전체**를 복사하세요. 설치 후 Codex를 새로 시작합니다.
+
+직접 설치할 때 `skills` 폴더가 없거나 경로가 열리지 않으면 AI 도구에 맡기는 방법을 이용하세요. 같은 스킬을 여러 설치 경로에 중복 복사하면 어떤 버전이 사용되는지 헷갈릴 수 있습니다.
 
 ## 포함된 스킬
 
@@ -82,39 +63,6 @@ $cinematic-video-prompts 첨부한 스타일프레임의 구도를 살려 15초 
 - `gaussian-splatting` — 이미지·사진·영상에서 Gaussian Splatting 및 Blender용 PLY 제작
 - `reference-to-style-prompts` — 스타일 레퍼런스에서 6컷 이미지 프롬프트와 영상 MOOD 지침 추출
 
-## Windows에서 설치
+## 실행 환경
 
-PowerShell에서 이 폴더로 이동한 뒤 전체 스킬을 설치합니다.
-
-```powershell
-.\install-skills.ps1
-```
-
-특정 스킬만 설치할 수도 있습니다.
-
-```powershell
-.\install-skills.ps1 -Names seedance-reference-video,reference-to-style-prompts
-```
-
-이미 같은 이름의 스킬이 있으면 기본적으로 중단합니다. 의도적으로 업데이트하려면 `-Force`를 붙입니다.
-
-```powershell
-.\install-skills.ps1 -Names seedance-reference-video -Force
-```
-
-기본 설치 대상은 사용자 홈의 `.agents\skills`입니다. 기존 환경에서 다른 경로를 사용한다면 `-DestinationRoot '원하는 경로'`로 지정할 수 있습니다. 설치 후 목록에 보이지 않으면 Codex를 다시 시작합니다.
-
-## 수동 설치
-
-원하는 스킬 폴더 전체를 아래 위치로 복사합니다.
-
-```text
-Windows: %USERPROFILE%\.agents\skills\<skill-name>
-macOS/Linux: ~/.agents/skills/<skill-name>
-```
-
-`SKILL.md`만 따로 떼지 말고 `agents/`, `references/`, `scripts/`가 있는 경우 함께 복사해야 합니다.
-
-## 실행 환경 주의사항
-
-프롬프트 작성형 스킬은 별도 설치 없이 사용할 수 있습니다. `trellis2-image-to-glb`와 `gaussian-splatting`은 GPU, Python, 모델 가중치 및 외부 오픈소스 도구가 필요할 수 있으며, 스킬이 현재 환경을 조사한 뒤 호환 가능한 실행 경로를 선택하거나 의존성 파일들을 설치합니다. `seedance-reference-video`의 로컬 영상 분석기는 Python과 OpenCV·NumPy가 있으면 대표 프레임과 콘택트시트를 자동 추출합니다.
+프롬프트 작성형 스킬은 추가 프로그램 없이 사용할 수 있습니다. `trellis2-image-to-glb`와 `gaussian-splatting`은 GPU, Python, 모델 가중치 및 외부 도구가 필요할 수 있습니다. `seedance-reference-video`의 로컬 영상 분석기는 Python과 OpenCV·NumPy가 있으면 대표 프레임과 콘택트시트를 자동 추출합니다.
