@@ -1,6 +1,6 @@
 ---
 name: gaussian-splatting
-description: Reconstruct a Gaussian Splatting asset from a single image, multiple photos, or video; export validated Gaussian and Blender-compatible PLY files; and verify the result with rendered views. Use for 3DGS, Gaussian PLY, NullSplat, camera alignment, training, cleanup, or Blender Gaussian workflows. Do not use for ordinary video conversion or polygon-mesh modeling.
+description: Reconstruct Gaussian Splatting from video or multiple real viewpoints using COLMAP camera estimation and a complete 3DGS trainer; export validated Gaussian and Blender-compatible PLY files with rendered previews. Use for video-to-3DGS, Gaussian PLY, NullSplat, alignment, training or Blender Gaussian workflows. Do not use for ordinary video conversion or polygon modeling.
 ---
 
 # Gaussian Splatting Reconstruction
@@ -9,10 +9,18 @@ Create and validate the actual Gaussian asset. Do not stop at commands, environm
 
 Read [references/workflow.md](references/workflow.md) before execution. It contains detailed procedures for input inspection, environment setup, camera registration, training, cleanup, PLY encoding, Blender compatibility, and quality assurance.
 
+## Bundled standalone automation
+
+On a compatible Windows NVIDIA machine, use `scripts/install_windows.ps1` to create the isolated Python 3.10/CUDA 12.4 runtime, install the tested prebuilt gsplat wheel, download the official COLMAP CUDA binary, install FFmpeg when requested, and execute the real CUDA/PLY/tool smoke tests. Then use `scripts/run_video_to_gaussian.ps1` for frame extraction, COLMAP registration and undistortion, gsplat training, Gaussian PLY export, and Blender RGB PLY conversion. Do not replace these scripts with hand-written partial setup unless the detected platform or current upstream compatibility requires another lane.
+
+The installer intentionally keeps system tools, runtime packages, and job data separate. Pass `-InstallSystemTools` only when Git, FFmpeg, or Python 3.10 is absent. The runner refuses to overwrite an existing job directory. After it finishes, render and inspect representative registered views before changing the manifest from `trained_requires_visual_validation` to complete.
+
 ## Select the reconstruction lane
 
-- **Single image:** use a verified single-image Gaussian prediction model. Label the result `single_image_estimated`; do not describe hidden surfaces as measured or promise a complete 360-degree scan.
-- **Multiple photos or video:** use genuinely distinct viewpoints, estimate cameras, and train a static-scene 3DGS pipeline. Reuse a working NullSplat environment when available; otherwise choose a maintained COLMAP/gsplat-based implementation with a complete loader, initialization, training, saving, and rendering path.
+- **Video (default) or multiple photos:** extract sharp, overlapping real viewpoints across the full clip, estimate cameras with COLMAP, and train a static-scene 3DGS pipeline. Reuse a working compatible environment; otherwise install an isolated maintained COLMAP/gsplat pipeline with a complete loader, initialization, training, saving, and rendering path. COLMAP estimates cameras and sparse geometry; it does not itself train Gaussian splats.
+- **Only one image supplied:** explain that the video reconstruction route needs actual multiview video/photos and request that input. Do not silently switch to SHARP or create artificial duplicates. Only investigate a single-image estimator when the user explicitly chooses that separate route; label it `single_image_estimated`.
+
+Evaluate licenses per selected component, including trainer, weights and renderer. SHARP's research-only restriction does not apply to COLMAP or Gaussian Splatting as a whole. Prefer a license-compatible video pipeline and do not ask a research-only usage question merely because SHARP exists. A permissive COLMAP license alone does not establish the license of a separate trainer.
 
 Do not duplicate one image into an SfM dataset. Detect insufficient parallax, object deformation, moving subjects, state changes, and fixed-camera turntables before deciding that standard static-scene SfM is valid.
 

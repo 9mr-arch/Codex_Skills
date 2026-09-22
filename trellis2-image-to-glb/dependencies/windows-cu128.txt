@@ -1,0 +1,25 @@
+# Python 3.11 environment. Install torch, torchvision, xformers, triton-windows
+# and the six compiled wheels first; see scripts/install_windows.ps1.
+transformers==4.57.1
+huggingface_hub>=0.34,<1
+numpy<3
+scipy
+pillow
+imageio
+imageio-ffmpeg
+tqdm
+easydict
+opencv-python-headless
+ninja
+trimesh
+tensorboard
+pandas
+lpips
+zstandard
+kornia
+timm
+einops
+safetensors
+psutil
+setuptools<81
+utils3d @ git+https://github.com/EasternJournalist/utils3d.git@9a4eb15e4021b67b12c460c7057d642626897ec8
