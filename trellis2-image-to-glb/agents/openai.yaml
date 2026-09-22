@@ -1,0 +1,4 @@
+interface:
+  display_name: "TRELLIS.2 Image to GLB"
+  short_description: "이미지에서 텍스처와 재질을 포함한 검증된 3D GLB를 제작"
+  default_prompt: "Use $trellis2-image-to-glb to turn the attached object images into a validated textured GLB."

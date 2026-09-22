@@ -1,0 +1,4 @@
+interface:
+  display_name: "Reference to Style Prompts"
+  short_description: "스타일 레퍼런스에서 이미지와 영상용 룩 프롬프트를 추출"
+  default_prompt: "Use $reference-to-style-prompts to extract reusable image and video mood prompts from this reference."

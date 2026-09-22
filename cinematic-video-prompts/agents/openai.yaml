@@ -1,0 +1,4 @@
+interface:
+  display_name: "Cinematic Video Prompts"
+  short_description: "실사 광고·드라마·패션 영상용 촬영 프롬프트 설계"
+  default_prompt: "Use $cinematic-video-prompts to design a production-ready live-action video prompt from my brief."

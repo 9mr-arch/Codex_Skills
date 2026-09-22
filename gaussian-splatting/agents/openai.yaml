@@ -1,0 +1,4 @@
+interface:
+  display_name: "Gaussian Splatting"
+  short_description: "사진과 영상을 Blender용 Gaussian PLY로 복원하고 검증"
+  default_prompt: "Use $gaussian-splatting to reconstruct the attached images or video as a validated Gaussian PLY."

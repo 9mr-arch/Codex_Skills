@@ -1,0 +1,4 @@
+interface:
+  display_name: "Beauty Character Sheet"
+  short_description: "화장품·미용기기 광고용 실사 모델 캐릭터 시트 제작"
+  default_prompt: "Use $beauty-character-sheet to create a consistent beauty advertising model character sheet."
